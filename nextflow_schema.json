@@ -26,7 +26,7 @@
                     "format": "directory-path",
                     "description": "The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.",
                     "fa_icon": "fas fa-folder-open",
-                    "default":"/scratch/pawsey0843/ziadbkh/cci_out/"
+                    "default":""
                 },
                 "email": {
                     "type": "string",
@@ -47,7 +47,7 @@
                     "type": "string",
                     "format": "file-path",
                     "mimetype": "text/plain",
-                    "default":"/scratch/pawsey0843/ziadbkh/cci/refgenome/GRCh38_no_alt.fa",
+                    "default":"",
                     "pattern": "^\\S+\\.fn?a(sta)?(\\.gz)?$",
                     "description": "Path to FASTA genome file.",
                     "help_text": "This parameter is *mandatory* if `--genome` is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with `--save_reference` to save BWA index for future runs.",
@@ -57,7 +57,7 @@
                     "type": "string",
                     "format": "directory-path",
                     "description": "Directory / URL base for references.",
-                    "default":"/scratch/pawsey0843/ziadbkh/cci/interval_lists.17/",
+                    "default":"",
                     "fa_icon": "fas fa-cloud-download-alt"
                 }
             }
