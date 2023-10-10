@@ -11,7 +11,7 @@ WorkflowAvc.initialise(params, log)
 
 // TODO nf-core: Add all file path parameters for the pipeline to the list below
 // Check input path parameters to see if they exist
-def checkPathParamList = [ params.input ]
+def checkPathParamList = [ params.input, params.fasta, params.intervals ]
 for (param in checkPathParamList) { if (param) { file(param, checkIfExists: true) } }
 
 // Check mandatory parameters
@@ -55,8 +55,6 @@ include { SPLITFASTQ                     } from '../modules/local/splitfastq.nf'
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-// Info required for completion email and summary
-def multiqc_report = []
 
 workflow AVC {
 
@@ -106,9 +104,9 @@ workflow AVC {
                     [row.sample_id, 
                     row.type.toLowerCase(), 
                     true, 
-                    [file(row.fastq1, checkIfExists:true), file(row.fastq2, checkIfExists:true)] ] 
+                    [row.fastq1, row.fastq2] ] 
                 }else{
-                    [row.sample_id, row.type.toLowerCase(), false, [file(row.fastq1, checkIfExists:true)] ]
+                    [row.sample_id, row.type.toLowerCase(), false, [row.fastq1] ]
                 }
             }
            
